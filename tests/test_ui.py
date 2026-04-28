@@ -51,23 +51,3 @@ def test_launch_trailer(driver):
     main.search_string(film)
     main.open_movie_card()
     main.launch_trailer()
-
-
-
-
-
-
-
-
-
-
-
-# def test_add_movie_to_watchlist(driver):
-#     film = "Тор"
-#     name_film = "Тор"
-#     main = Page(driver)
-#     main.search_string(film)
-#     main.open_movie_card()
-#     main.adding_to_watch_list()
-#     main.open_my_section()
-#     main.checking_adding_to_section(name_film)
