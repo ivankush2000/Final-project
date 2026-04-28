@@ -135,5 +135,3 @@ class Page:
             EC.element_to_be_clickable((By.XPATH, self.TRAILER))
         )
         trailer.click()
-
-

@@ -51,3 +51,4 @@ def test_launch_trailer(driver):
     main.search_string(film)
     main.open_movie_card()
     main.launch_trailer()
+
