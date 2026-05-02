@@ -16,7 +16,10 @@ class MoviePage(BasePage):
     @allure.step("Открыть карточку фильма")
     def open_card_by_name(self):
         """Открывает карточку фильма по названию и ждёт загрузки страницы."""
-        card_xpath = f'//div[@class="element most_wanted"]//a[contains(text(), "{self.movie_name}")]'
+        card_xpath = (
+            f'//div[@class="element most_wanted"]//a[contains(text(), '
+            f'"{self.movie_name}")]'
+            )
         card = self.wait.until(
             EC.element_to_be_clickable((By.XPATH, card_xpath)))
         card.click()
@@ -37,6 +40,5 @@ class MoviePage(BasePage):
             self.wait.until(
                 EC.presence_of_element_located((By.XPATH, self.PLAY_BUTTON)))
             return True
-        except Exception as e:
-            print(f"не найден: {e}")
+        except Exception:
             return False

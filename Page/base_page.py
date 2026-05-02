@@ -13,7 +13,7 @@ class BasePage:
 
     def __init__(self, driver: WebDriver) -> None:
         self.driver = driver
-        self.wait = WebDriverWait(driver, 10)
+        self.wait = WebDriverWait(driver, 25)
 
     @allure.step("Закрыть рекламный баннер, если есть")
     def close_ad_if_present(self):
@@ -21,7 +21,8 @@ class BasePage:
         try:
             ad = (WebDriverWait(self.driver, 2,
                                 ignored_exceptions=[NoSuchElementException])
-                  .until(EC.element_to_be_clickable((By.XPATH, self.CLOSE_AD_BUTTON))))
+                  .until(EC.element_to_be_clickable(
+                      (By.XPATH, self.CLOSE_AD_BUTTON))))
             ad.click()
             WebDriverWait(self.driver, 3).until(
                 EC.invisibility_of_element_located(

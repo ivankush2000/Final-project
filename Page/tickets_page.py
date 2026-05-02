@@ -5,7 +5,10 @@ from selenium.webdriver.common.by import By
 
 
 class TicketsPage(BasePage):
-    MOVIE_TICKETS_LINK = '//a[@href="/lists/movies/movies-in-cinema/?utm_source=kinopoisk&utm_term=webbutton"]'
+    MOVIE_TICKETS_LINK = (
+        '//a[@href="/lists/movies/movies-in-cinema/'
+        '?utm_source=kinopoisk&utm_term=webbutton"]'
+        )
     HEADER = '//h1[contains(@class, "styles_title")]'
 
     @allure.step("Перейти в раздел 'Билеты в кино'")

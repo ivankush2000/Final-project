@@ -5,7 +5,9 @@ from selenium.webdriver.common.by import By
 
 
 class SearchResultsPage(BasePage):
-    CARD_FIRST_FILM = "//div[@class='element most_wanted']//p[contains(@class, 'name')]/a"
+    CARD_FIRST_FILM = (
+        "//div[@class='element most_wanted']//p[contains(@class, 'name')]/a"
+        )
 
     @allure.step("Получить название первого фильма")
     def get_first_film_title(self) -> str:

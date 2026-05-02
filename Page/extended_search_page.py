@@ -5,7 +5,7 @@ from selenium.webdriver.common.by import By
 
 
 class ExtendedSearchPage(BasePage):
-    # ссылка для перехода в расширенный поиск (используем contains, а не точный генерируемый класс)
+    # ссылка для перехода в расширенный поиск
     ADVANCED_SEARCH_LINK = "//a[contains(@class, 'advancedSearch')]"
     # выпадающий список "Тип поиска"
     # если стабилен, иначе data-tid
@@ -29,7 +29,8 @@ class ExtendedSearchPage(BasePage):
     def select_search_type(self, type_value: str = 'actor'):
         """Выбирает значение в выпадающем списке (например, 'actor')."""
         option = self.wait.until(
-            EC.element_to_be_clickable((By.XPATH, f"//option[@value='{type_value}']"))
+            EC.element_to_be_clickable(
+                (By.XPATH, f"//option[@value='{type_value}']"))
         )
         option.click()
 
@@ -69,7 +70,11 @@ class ExtendedSearchPage(BasePage):
 
     @allure.step("Выбрать жанр '{genre}'")
     def genre_select(self, genre):
-        genre_xpath = f'//select[@class="text el_6 __genreSB__"]//option[contains(text(), "{genre}")]'
+        genre_xpath = (
+            f'//select[@class="text el_6 __genreSB__"]'
+            f'//option[contains(text(), '
+            f'"{genre}")]'
+            )
         genre_option = self.wait.until(
             EC.element_to_be_clickable((By.XPATH, genre_xpath)))
         genre_option.click()
