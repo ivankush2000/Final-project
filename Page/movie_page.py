@@ -33,12 +33,3 @@ class MoviePage(BasePage):
             (By.XPATH, self.TRAILER_START_BUTTON)
         ))
         trailer_btn.click()
-
-    @allure.step("Проверить, что кнопка 'Остановить' видна")
-    def is_stop_but(self):
-        try:
-            self.wait.until(
-                EC.presence_of_element_located((By.XPATH, self.PLAY_BUTTON)))
-            return True
-        except Exception:
-            return False
