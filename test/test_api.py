@@ -1,9 +1,12 @@
 import pytest
 import requests
 import allure
+import os
+from dotenv import load_dotenv
 
-base_url = "https://api.poiskkino.dev/"
-api_key = {"x-api-key": "PXSZZMX-HPK4FSX-M13ATHQ-BSTGMFM"}
+load_dotenv()
+url_api = os.getenv("base_url")
+api_key = {"x-api-key": os.getenv("api_key")}
 
 
 @pytest.mark.api
@@ -18,7 +21,7 @@ def test_search_movie_by_year_and_genre():
         "Отправить GET-запрос на /v1.4/movie с нужными параметрами"
     ):
         response = requests.get(
-            url=f"{base_url}v1.4/movie", params=params, headers=api_key
+            url=f"{url_api}v1.4/movie", params=params, headers=api_key
         )
 
     with allure.step("Проверить, что статус-код ответа равен 200"):
@@ -44,7 +47,7 @@ def test_search_movie_by_rating_range():
         "Отправить GET-запрос на /v1.4/movie с диапазоном рейтинга 8-10"
     ):
         response = requests.get(
-            url=f"{base_url}v1.4/movie", params=params, headers=api_key
+            url=f"{url_api}v1.4/movie", params=params, headers=api_key
         )
 
     with allure.step("Убедиться, что сервер вернул 200"):
@@ -70,7 +73,7 @@ def test_search_movie_by_country():
         "Отправить GET-запрос с параметром 'countries.name' = 'Россия'"
     ):
         response = requests.get(
-            url=f"{base_url}v1.4/movie", params=params, headers=api_key
+            url=f"{url_api}v1.4/movie", params=params, headers=api_key
         )
 
     with allure.step("Проверить статус-код 200"):
@@ -91,7 +94,7 @@ def test_search_movie_by_country():
 def test_get_movie_by_id():
     """Позитивный тест: получение информации о фильме по его ID."""
     movie_id = "301"
-    url = f"{base_url}v1.4/movie/{movie_id}"
+    url = f"{url_api}v1.4/movie/{movie_id}"
 
     with allure.step(f"Отправить GET-запрос на {url}"):
         response = requests.get(url, headers=api_key)
@@ -120,7 +123,7 @@ def test_search_person_by_name():
 
     with allure.step("Отправить GET-запрос на /v1.4/person с параметром name"):
         response = requests.get(
-            url=f"{base_url}v1.4/person", params=params, headers=api_key
+            url=f"{url_api}v1.4/person", params=params, headers=api_key
         )
 
     with allure.step("Проверить, что статус ответа равен 200"):

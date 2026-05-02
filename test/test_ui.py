@@ -5,6 +5,7 @@ from Page.search_results_page import SearchResultsPage
 from Page.extended_search_page import ExtendedSearchPage
 from Page.movie_page import MoviePage
 from Page.tickets_page import TicketsPage
+from Page.video_player import VideoPlayer
 
 
 @pytest.mark.ui
@@ -85,8 +86,11 @@ def test_launch_trailer(driver):
         f"Открыть карточку фильма '{movie_name}' и запустить трейлер"
     ):
         main = BasePage(driver)
+        player = VideoPlayer(driver)
+        main.close_ad_if_present()
         main.search(movie_name)
         movie = MoviePage(driver, movie_name)
         movie.open_card_by_name()
         movie.launch_trailer()
-        assert movie.is_stop_but()
+
+        assert player.video_inside_player_iframe()
