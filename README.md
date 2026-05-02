@@ -24,6 +24,7 @@
 
 
 ## Структура проекта
+```
 .
 ├── Page/ # Пакет Page Object Model
 │ ├── base_page.py # Базовые методы (поиск, закрытие рекламы)
@@ -40,6 +41,7 @@
 ├── pytest.ini # Маркеры и пути поиска тестов
 ├── requirements.txt # Зависимости
 └── README.md # Описание проекта
+```
 
 ### Описание проекта
 
@@ -67,35 +69,30 @@ pip install -r requirements.txt
 
 Содержимое requirements.txt:
 
-pytest==9.0.2
-
-selenium==4.18.1
-
-requests==2.31.0
-
-allure-pytest==2.13.2
-
-python-dotenv==1.0.1
-
-webdriver-manager==4.0.1
+* pytest==9.0.2
+* selenium==4.18.1
+* requests==2.31.0
+* allure-pytest==2.13.2
+* python-dotenv==1.0.1
+* webdriver-manager==4.0.1
 
 ### 2. Запуск всех тестов.
-
+```
 pytest
-
+```
 ### 3. Запуск только API-тестов
-
+```
 pytest -m api
-
+```
 ### 4. Запуск только UI-тестов
-
+```
 pytest -m ui
-
+```
 ### 5. Генерация Allure-отчёта
-
+```
 pytest --alluredir=allure-results
 allure serve allure-results 
-
+```
 ## Ссылка на финальный проект:
 
 Ссылка на тест-план: https://1703h.yonote.ru/share/b55a498a-c70f-4a12-ae56-deda10e5fc35
